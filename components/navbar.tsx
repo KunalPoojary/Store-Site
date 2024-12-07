@@ -4,7 +4,6 @@ import { Ms_Madi } from "next/font/google";
 import { Menu, MenuIcon } from "lucide-react";
 
 import MainNav from "@/components/main-nav";
-import Container from "@/components/ui/container";
 import NavbarActions from "@/components/navbar-actions";
 import getCategories from "@/actions/get-categories";
 
@@ -58,6 +57,7 @@ const Navbar = async () => {
         </span>
       </button> */}
       <MainNav data={categories} />
+      <NavbarActions />
       {/* <NavbarActions /> */}
       <MenuIcon className="md:hidden" />
     </aside>
