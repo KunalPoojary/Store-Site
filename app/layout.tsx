@@ -29,7 +29,7 @@ export default function RootLayout({
           <ToastProvider />
           <ModalProvider />
           <Navbar />
-          {children}
+          <div className="bg-slate-950">{children}</div>
         </ThemeProvider>
       </body>
     </html>

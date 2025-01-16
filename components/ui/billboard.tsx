@@ -6,7 +6,7 @@ interface BillboardProps {
 }
 
 const Billboard: React.FC<BillboardProps> = ({ data }) => {
-  console;
+  const image = data?.imageUrl;
   return (
     // <div className='p-4 sm:p-6 lg:p-8 rounded-xl overflow-hidden'>
     //   <div
@@ -28,13 +28,15 @@ const Billboard: React.FC<BillboardProps> = ({ data }) => {
             <div className="h-[122px] flex items-center justify-center font-medium text-[122px]">
               {data?.label}
             </div>
-            <Image
-              height={2160}
-              width={3840}
-              src={data.imageUrl}
-              className="h-[764px] object-cover pt-5 " //min-h-[680px]
-              alt="Model"
-            />
+            { image && (
+              <Image
+                height={2160}
+                width={3840}
+                src={data.imageUrl}
+                className="h-[764px] object-cover pt-5 " //min-h-[680px]
+                alt="Model"
+              />
+            )}
             {/*md:mt-20*/}
           </div>
         </div>

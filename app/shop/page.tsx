@@ -1,38 +1,27 @@
+import React from "react";
+import getProducts from "@/actions/get-products";
+import getSizes from "@/actions/get-sizes";
 import ProductCard from '@/components/ui/product-card';
 import NoResults from '@/components/ui/no-results';
-
-import getProducts from "@/actions/get-products";
-import getCategory from '@/actions/get-category';
-import getSizes from '@/actions/get-sizes';
-import getColors from '@/actions/get-colors';
-
+import getColors from "@/actions/get-colors";
 import Filter from './components/filter';
 import MobileFilters from './components/mobile-filters';
 
-export const revalidate = 0;
-
-interface CategoryPageProps {
-  params: {
-    categoryId: string;
-  },
-  searchParams: {
-    colorId: string;
-    sizeId: string;
+interface ShopPageProps{
+  searchParams:{
+    sizeId:string,
+    colorId:string,
   }
 }
 
-const CategoryPage: React.FC<CategoryPageProps> = async ({ 
-  params, 
-  searchParams
-}) => {
+const ShopPage : React.FC<ShopPageProps> = async ({searchParams}) => {
+
   const products = await getProducts({ 
-    categoryId: params.categoryId,
-    colorId: searchParams.colorId,
     sizeId: searchParams.sizeId,
+    colorId: searchParams.colorId,
   });
   const sizes = await getSizes();
   const colors = await getColors();
-  const category = await getCategory(params.categoryId);
 
   return (
     <div className='bg-slate-950'>
@@ -65,4 +54,4 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({
   );
 };
 
-export default CategoryPage;
+export default ShopPage;
